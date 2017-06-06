@@ -3,14 +3,14 @@ junkFunc(){
   for item in "$@" ;
 		do if [ -d "$item" ];#directory
 		then
-			echo "Trashing: $item" ;
+			#echo "Trashing: $item" ;
 			mv -i "$item" ~/.Trash/;
 		elif [ -f "$item" ];#file
 		then
-			echo "Trashing: $item" ;
+			#echo "Trashing: $item" ;
 			mv -i "$item" ~/.Trash/;
 		else
-			echo "$item is invalid"
+			echo "$item is an unknown filetype"
 		fi
   done;
 }
@@ -33,7 +33,7 @@ alias tmuxconfR='tmux source-file ~/.tmux.conf'
 
 #Custom scripts
 alias junk=junkFunc
-alias rm=junkFunc
+#alias rm=junkFunc
 
 #SSH Aliases
 alias mbe='ssh burtow@warzone.rpis.ec'
