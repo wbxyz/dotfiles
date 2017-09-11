@@ -36,9 +36,9 @@ alias junk=junkFunc
 #alias rm=junkFunc
 
 #SSH Aliases
-alias mbe='ssh burtow@warzone.rpis.ec'
-alias mars='ssh -p 4342 william@burtonindustry.com'
-alias garage='ssh -p 4242 pi@burtonindustry.com'
+alias mbe='ssh'
+alias mars='ssh'
+alias garage='ssh'
 
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
