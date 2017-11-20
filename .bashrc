@@ -41,10 +41,10 @@ alias junk=junkFunc
 alias cdls=cdClearList
 
 #SSH Aliases
-alias mbe=ssh mbe
-alias mars=ssh mars
-alias garage=ssh garage
-alias kitchen=ssh kitchen
+alias mbe="ssh mbe"
+alias mars="ssh mars"
+alias garage="ssh garage"
+alias kitchen="ssh kitchen"
 
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
@@ -70,8 +70,6 @@ alias atom.='atom .'
 export PATH="/usr/local/bin:${PATH}"
 export PATH="/usr/local/Cellar/gcc/6.2.0/bin:${PATH}"
 
-#************Exporting Variabels*******************
+#************Exporting Variables*******************
 #export TERM=xterm
 
-#************Exporting Variabels*******************
-source /Users/ladmin/Documents/cs/repos/tools/cheats/cheats.sh

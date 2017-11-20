@@ -92,10 +92,10 @@ alias tmuxconfR='tmux source-file ~/.tmux.conf'
 alias junk=junkFunc
 
 #SSH Aliases
-alias mbe=ssh mbe
-alias mars=ssh mars
-alias garage=ssh garage
-alias kitchen=ssh kitchen
+alias mbe='ssh mbe'
+alias mars='ssh mars'
+alias garage='ssh garage'
+alias kitchen='ssh kitchen'
 
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
