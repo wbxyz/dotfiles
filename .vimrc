@@ -41,6 +41,12 @@ set autoindent
 " line of a window
 set ruler
  
+" Show the hidden characters such as tab, newlines, and other whitespace "
+set list
+
+" Choose the characters to ilustrate the whitespace hidden characters
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files.
 set confirm
@@ -69,7 +75,7 @@ set pastetoggle=<F11>
  
  
 " Indentation settings for using hard tabs for indent. Display tabs as
-" four characters wide.
+" two characters wide.
 set shiftwidth=2
 set tabstop=2
  

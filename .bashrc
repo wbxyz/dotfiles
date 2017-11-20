@@ -15,6 +15,11 @@ junkFunc(){
   done;
 }
 
+cdClearList(){
+	cd "$@" ;
+	clear;
+	ls -CFG;
+}
 
 #************Custom Tool Aliases************************
 alias ..='cd ..'
@@ -24,7 +29,6 @@ alias ll='ls -lhA'
 alias lg='ls -CAFG'
 alias lsl='ls -lhFA | less'
 alias cls='clear; ls -AFG;'
-alias cdls='cd "$@"; cls;'
 alias bashrc='vim ~/.bashrc'
 alias bashrcR='. ~/.bashrc'
 alias vimrc='vim ~/.vimrc'
@@ -34,18 +38,23 @@ alias tmuxconfR='tmux source-file ~/.tmux.conf'
 #Custom scripts
 alias junk=junkFunc
 #alias rm=junkFunc
+alias cdls=cdClearList
 
 #SSH Aliases
-alias mbe='ssh'
-alias mars='ssh'
-alias garage='ssh'
+alias mbe=ssh mbe
+alias mars=ssh mars
+alias garage=ssh garage
+alias kitchen=ssh kitchen
 
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
+#************Docker Aliases************************
+alias ctf='~/github/CTFDock/run'
+alias ctfedit='vim ~/github/CTFDock/Dockerfile'
+alias ctfbuild='vim ~/github/CTFDock/Dockerfile; cd ~/github/CTFDock/; ./build; cd -'
+
 #************CD Aliases************************
-alias RCOS='cd /Users/ladmin/Documents/cs/RCOS'
-alias PERS='cd /Users/ladmin/Dropbox/PersonalProjects'
 
 #************Open Aliases************************
 alias vlc='open /Applications/VLC.app'
@@ -61,9 +70,8 @@ alias atom.='atom .'
 export PATH="/usr/local/bin:${PATH}"
 export PATH="/usr/local/Cellar/gcc/6.2.0/bin:${PATH}"
 
-#************Exporting RCOS stuff****************
-PATH=$PATH:/Users/ladmin/Documents/cs/RCOS/omnetpp-5.0/bin
+#************Exporting Variabels*******************
+#export TERM=xterm
 
 #************Exporting Variabels*******************
-export TERM=xterm
-
+source /Users/ladmin/Documents/cs/repos/tools/cheats/cheats.sh
