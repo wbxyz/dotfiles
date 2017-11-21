@@ -1,3 +1,4 @@
+source ~/.localbashrc
 #************Custom Functions************************
 junkFunc(){
   for item in "$@" ;

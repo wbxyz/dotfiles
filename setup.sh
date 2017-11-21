@@ -18,11 +18,13 @@ confirm() {
 [ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
 ! [ -d "$DOTFILES_DIR"/backups ] && mkdir $DOTFILES_DIR/backups
+! [ -e ~/.localbashrc ] && touch ~/.localbashrc
+! [ -e ~/.localzshrc ] && touch ~/.localzshrc
 
 for fn in $(cat "$TO_HOME")
 do
-	if confirm "Take the new $fn (y/N)?"; then
-		[ -e ~/$fn ] && [  ~/"$fn" -ef $DOTFILES_DIR/$fn ] && echo "\tIdentical, skipping..." && continue
+	[ -e ~/$fn ] && [  ~/"$fn" -ef $DOTFILES_DIR/$fn ] && echo "$fn is already linked to $DOTFILES_DIR/$fn, skipping..." && continue
+	if confirm "Take the new $fn [y/N]?"; then
 		[ -e ~/$fn ] && echo "\tMoving file to backups" && mv -iv ~/"$fn" "$DOTFILES_DIR"/backups/"$fn"."$(date +%s)"
 		echo "\tInstalling new $fn" && ln -sfv "$DOTFILES_DIR/$fn" ~
 	fi
