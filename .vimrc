@@ -83,3 +83,10 @@ set tabstop=2
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
+
+" Make vim wrap long lines between words.
+set wrap lbr
+
+" Move visual lines instead of hard lines when a line is wrapped
+noremap j gj
+noremap k gk
