@@ -18,8 +18,8 @@ confirm() {
 [ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
 ! [ -d "$DOTFILES_DIR"/backups ] && mkdir $DOTFILES_DIR/backups
-! [ -e ~/.localbashrc ] && touch ~/.localbashrc
-! [ -e ~/.localzshrc ] && touch ~/.localzshrc
+! [ -d ~/.vim ] && mkdir ~/.vim
+! [ -d ~/.vim/undodir ] && mkdir ~/.vim/undodir
 
 for fn in $(cat "$TO_HOME")
 do
@@ -29,3 +29,4 @@ do
 		echo "\tInstalling new $fn" && ln -sfv "$DOTFILES_DIR/$fn" ~
 	fi
 done
+echo "Finished, please remember to add the appropriate aliases to the existing .*rc files. For example, \"alias ~/.bash_aliases\" into ~/.bashrc"
