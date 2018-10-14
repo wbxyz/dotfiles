@@ -1,30 +1,12 @@
 source ~/.localbashrc
 #************Custom Functions************************
-junkFunc(){
-  for item in "$@" ;
-		do if [ -d "$item" ];#directory
-		then
-			#echo "Trashing: $item" ;
-			mv -i "$item" ~/.Trash/;
-		elif [ -f "$item" ];#file
-		then
-			#echo "Trashing: $item" ;
-			mv -i "$item" ~/.Trash/;
-		else
-			echo "$item is an unknown filetype"
-		fi
-  done;
-}
-
 cdClearList(){
 	cd "$@" ;
 	clear;
 	ls -CFG;
 }
 
-#************Custom Tool Aliases************************
-alias ..='cd ..'
-alias cd..='cd ..'
+#************Custom Misc Aliases************************
 alias ls='ls -CFG'
 alias ll='ls -lhA'
 alias lg='ls -CAFG'
@@ -37,18 +19,8 @@ alias tmuxconf='vim ~/.tmux.conf'
 alias tmuxconfR='tmux source-file ~/.tmux.conf'
 
 #Custom scripts
-alias junk=junkFunc
-#alias rm=junkFunc
 alias cdls=cdClearList
 
-#SSH Aliases
-alias mbe="ssh mbe"
-alias mars="ssh mars"
-alias garage="ssh garage"
-alias kitchen="ssh kitchen"
-
-alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
 #************Docker Aliases************************
 alias ctf='~/github/CTFDock/run'
@@ -58,18 +30,13 @@ alias ctfbuild='vim ~/github/CTFDock/Dockerfile; cd ~/github/CTFDock/; ./build; 
 #************CD Aliases************************
 
 #************Open Aliases************************
-alias vlc='open /Applications/VLC.app'
-alias g++="/usr/local/Cellar/gcc/6.2.0/bin/g++-6"
-alias gcc="/usr/local/Cellar/gcc/6.2.0/bin/gcc-6"
-alias calc="/Applications/Calculator.app/contents/MacOS/Calculator &"
 
 #************Typo Aliases************************
 alias sl='ls'
-alias atom.='atom .'
+alias ..='cd ..'
+alias cd..='cd ..'
 
 #************Exporting to Path*********************
-export PATH="/usr/local/bin:${PATH}"
-export PATH="/usr/local/Cellar/gcc/6.2.0/bin:${PATH}"
 
 #************Exporting Variables*******************
 #export TERM=xterm
