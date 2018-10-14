@@ -1,4 +1,3 @@
-source ~/.localbashrc
 #************Custom Functions************************
 cdClearList(){
 	cd "$@" ;
