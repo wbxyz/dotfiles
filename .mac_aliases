@@ -1,0 +1,22 @@
+junkFunc(){
+  for item in "$@" ;
+		do if [ -d "$item" ];#directory
+		then
+			#echo "Trashing: $item" ;
+			mv -i "$item" ~/.Trash/;
+		elif [ -f "$item" ];#file
+		then
+			#echo "Trashing: $item" ;
+			mv -i "$item" ~/.Trash/;
+		else
+			echo "$item is an unknown filetype"
+		fi
+  done;
+}
+
+alias junk=junkFunc
+#alias rm=junkFunc
+
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
