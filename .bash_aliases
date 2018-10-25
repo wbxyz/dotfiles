@@ -39,4 +39,9 @@ alias cd..='cd ..'
 
 #************Exporting Variables*******************
 #export TERM=xterm
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+export VIRTUALENVWRAPPER_SCRIPT=/home/william/.local/bin/virtualenvwrapper.sh
+source /home/william/.local/bin/virtualenvwrapper_lazy.sh
 
+export GTK_IM_MODULE=gtk-im-context-simple
