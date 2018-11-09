@@ -1,5 +1,4 @@
-.bash_profile
-.bashrc
+.bash_aliases
 .tmux.conf
 .vimrc
 .zshrc
