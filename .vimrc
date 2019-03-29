@@ -1,27 +1,27 @@
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
- 
+
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 filetype indent plugin on
- 
+
 " Enable syntax highlighting
 syntax on
- 
+
 " Maintain undo history after vim is closed
 set undofile
 
 " Store the undo files somewhere hidden
-set undodir=~/.vim/undodir
+set undodir=~/.config/nvim/undodir
 
 " Number of undos to save in the undofile
 set undolevels=1000
 
 " Show partial commands in the last line of the screen
 set showcmd
- 
+
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
 set hlsearch
