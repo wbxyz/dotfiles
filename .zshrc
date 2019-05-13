@@ -72,7 +72,7 @@ junkFunc(){
   done;
 }
 
-#************Docker Aliases************************
+#************Custom Commands************************
 alias ..='cd ..'
 alias cd..='cd ..'
 alias ls='ls -CFG'
@@ -88,10 +88,16 @@ alias vimrc='vim ~/.vimrc'
 alias tmuxconf='vim ~/.tmux.conf'
 alias tmuxconfR='tmux source-file ~/.tmux.conf'
 
+# VirtualEnvWrapper setup
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+
 # Custom scripts
 alias junk=junkFunc
 
-#SSH Aliases
+# SSH Aliases
 alias mbe='ssh mbe'
 alias mars='ssh mars'
 alias garage='ssh garage'
