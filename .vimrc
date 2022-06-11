@@ -90,3 +90,21 @@ set wrap lbr
 " Move visual lines instead of hard lines when a line is wrapped
 noremap j gj
 noremap k gk
+
+" Set the cursor to be full block in normal mode, and line in insert mode.
+" Ps = 0  -> blinking block.
+" Ps = 1  -> blinking block (default).
+" Ps = 2  -> steady block.
+" Ps = 3  -> blinking underline.
+" Ps = 4  -> steady underline.
+" Ps = 5  -> blinking bar (xterm).
+" Ps = 6  -> steady bar (xterm).
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+" Reset the cursor on start (for older versions of vim, usually not required).
+" This is needed due to my .inputrc changing cursor types for input modes.
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup END
