@@ -14,7 +14,15 @@ syntax on
 set undofile
 
 " Store the undo files somewhere hidden
-set undodir=~/.config/nvim/undodir
+set undodir=~/.vim/undo-dir/
+
+" Create that folder if it doesn't exist yet.
+if !isdirectory($HOME."/.vim/")
+	call mkdir($HOME."/.vim/", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undo-dir/")
+	call mkdir($HOME."/.vim/undo-dir/", "", 0700)
+endif
 
 " Number of undos to save in the undofile
 set undolevels=1000
@@ -104,7 +112,9 @@ let &t_EI = "\e[2 q"
 
 " Reset the cursor on start (for older versions of vim, usually not required).
 " This is needed due to my .inputrc changing cursor types for input modes.
-augroup myCmds
-au!
-autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup cursorReset
+	" autogroup followed by autocmd! prevents duplicate definitions (each time
+	" .vimrc is sourced, it appends)
+	autocmd!
+	autocmd VimEnter * silent !echo -ne "\e[2 q"
 augroup END
