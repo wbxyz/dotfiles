@@ -1,0 +1,56 @@
+{
+    "editor.fontFamily": "DejaVu Sans Mono for Powerline",
+    "workbench.colorTheme": "Gruvbox Dark (Medium)",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    "explorer.confirmDragAndDrop": false,
+    "vim.history": 1000,
+    "workbench.editor.enablePreview": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.formatOnType": true,
+    "window.menuBarVisibility": "default",
+    "workbench.activityBar.visible": true,
+    "python.formatting.provider": "yapf",
+    "python.showStartPage": false,
+    "[c]": {
+        "editor.wordBasedSuggestions": false,
+        "editor.suggest.insertMode": "replace",
+        "editor.semanticHighlighting.enabled": true
+    },
+    "python.linting.pydocstyleArgs": [
+      "--match",
+      "(?!.*_test).*\\.py"
+    ],
+    "editor.rulers": [
+        80,
+    ],
+    "window.zoomLevel": 0,
+    "editor.minimap.enabled": false,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true
+    },
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+      "--rcfile=${env:HOME}/.pylintrc",
+      "--indent-string",
+      "    "
+    ],
+    "python.formatting.yapfArgs": [
+      "--style",
+      "{based_on_style: google, indent_width: 4}"
+    ],
+    "[python]": {
+      "editor.formatOnType": true,
+      "editor.defaultFormatter": "ms-python.python"
+    },
+    "telemetry.telemetryLevel": "off",
+    "python.envFile": "${workspaceFolder}/venv",
+}
