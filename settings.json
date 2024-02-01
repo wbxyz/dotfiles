@@ -1,43 +1,47 @@
 {
-  "workbench.colorTheme": "Gruvbox Dark (Medium)",
-  "diffEditor.ignoreTrimWhitespace": false,
-  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
-  "explorer.confirmDragAndDrop": false,
-  "vim.history": 1000,
-  "workbench.editor.enablePreview": false,
-  "editor.minimap.renderCharacters": false,
-  "editor.formatOnType": true,
-  "window.menuBarVisibility": "toggle",
-  "[c]": {
-      "editor.wordBasedSuggestions": "off",
-      "editor.suggest.insertMode": "replace",
-      "editor.semanticHighlighting.enabled": true
-  },
-  "editor.rulers": [
-      80,
-  ],
-  "window.zoomLevel": 0,
-  "editor.minimap.enabled": false,
-  "files.exclude": {
-      "**/__pycache__": true,
-      "**/*.pyc": true
-  },
-  "workbench.editorAssociations": {
-      "*.ipynb": "jupyter-notebook"
-  },
-  "notebook.cellToolbarLocation": {
-      "default": "right",
-      "jupyter-notebook": "left"
-  },
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true
+    "workbench.colorTheme": "Gruvbox Dark (Medium)",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    "explorer.confirmDragAndDrop": false,
+    "vim.history": 1000,
+    "workbench.editor.enablePreview": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.formatOnType": true,
+    "window.menuBarVisibility": "toggle",
+    "[c]": {
+        "editor.wordBasedSuggestions": "off",
+        "editor.suggest.insertMode": "replace",
+        "editor.semanticHighlighting.enabled": true
     },
-  },
-  "isort.args":["--profile", "black"],
-  "telemetry.telemetryLevel": "off",
-  "python.envFile": "${workspaceFolder}/venv",
-  "editor.scrollBeyondLastLine": false,
+    "editor.rulers": [
+        80,
+    ],
+    "window.zoomLevel": 0,
+    "editor.minimap.enabled": false,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true
+    },
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+    },
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    "telemetry.telemetryLevel": "off",
+    "python.envFile": "${workspaceFolder}/venv",
+    "editor.scrollBeyondLastLine": false,
+    "autoDocstring.docstringFormat": "google-notypes",
 }
