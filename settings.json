@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Gruvbox Dark (Medium)",
+    "workbench.colorTheme": "Default Dark Modern",
     "diffEditor.ignoreTrimWhitespace": false,
     "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
     "explorer.confirmDragAndDrop": false,
@@ -33,8 +33,14 @@
         "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true
+            "source.organizeImports": "explicit"
         },
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "isort.args": [
         "--profile",
@@ -44,4 +50,15 @@
     "python.envFile": "${workspaceFolder}/venv",
     "editor.scrollBeyondLastLine": false,
     "autoDocstring.docstringFormat": "google-notypes",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "scm.showIncomingChanges": "always",
+    "scm.showOutgoingChanges": "always",
+    "scm.showChangesSummary": false,
+    "files.insertFinalNewline": true,
+    "vim.showMarksInGutter": true,
+    // Allow the "open file" native vscode command.
+    "vim.handleKeys": {
+        "<C-p>": false,
+    }
 }
