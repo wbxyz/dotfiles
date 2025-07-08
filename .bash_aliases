@@ -31,9 +31,6 @@ alias ctfbuild='vim ~/github/CTFDock/Dockerfile; cd ~/github/CTFDock/; ./build; 
 #************Open Aliases************************
 
 #************Typo Aliases************************
-alias sl='ls'
-alias ..='cd ..'
-alias cd..='cd ..'
 
 #************Exporting to Path*********************
 
