@@ -20,11 +20,11 @@ jjd() {
 }
 jju() {
   REV="${1:-this}"
-  revs="$(jj log -r "$REV" --no-graph -T 'self.change_id().short()')"
+  revs="$(jj log -r "$REV" --no-graph -T 'self.change_id().short() ++ " "')"
   # Update revs to reflect stacked state
   for rev in "$revs"; do
     message="$(jj log -r $rev --no-graph -T 'self.description()')"
-    mutparents="$(jj log -r "(immutable()..$rev)-&mutable()" --no-graph -T 'self.change_id().short()')"
+    mutparents="$(jj log -r "(immutable()..$rev)-&mutable()" --no-graph -T 'self.change_id().short() ++ " "')"
     has=$([[ "$message" == *"$_stacked_tag" ]]; echo $((1 - $?)))
     needs=$([[ "$mutparents" != "" ]]; echo $((1 - $?)))
     if (( $needs && ! $has )); then
@@ -38,7 +38,7 @@ jju() {
   done
   # Push each rev
   for rev in "$revs"; do
-    remote="$(jj log -r $rev --no-graph -T 'self.remote_bookmarks().map(|b| b.name())')"
+    remote="$(jj log -r $rev --no-graph -T 'self.remote_bookmarks().map(|b| b.name()) ++ " "')"
     if [[ $remote == "" ]]; then
       jj git push -c $rev
     else
@@ -143,4 +143,35 @@ jjsh() { # sync here
 jjbd() { # delete bookmark
   branch="${1}"
   jj bookmark delete "${branch}" && jj git push --bookmark "${branch}"
+}
+jjdo() { # iterate over a revset
+  if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <revset> <command>"
+    exit 1
+  fi
+  REVSET=$1
+  COMMAND=$2
+  # Get the current working-copy commit ID to return to it upon success.
+  ORIGINAL_WC_COMMIT=$(jj log -r '@' --no-graph --template 'commit_id')
+  # Get the list of commit IDs for the given revset.
+  REVISIONS=$(jj log -r "$REVSET" --no-graph -T 'self.change_id().short() ++ " "')
+  echo $REVISIONS
+  # Iterate over each commit ID in the revset.
+  for REV in $REVISIONS; do
+    echo "--- Checking out revision: $REV ---"
+    jj new "$REV"
+    # Execute the command and check its exit status.
+    if ! sh -c "$COMMAND"; then
+      echo ""
+      echo "Error: Command failed on revision $REV. Stopping execution." >&2
+      echo "You are now at the broken revision." >&2
+      exit 1
+    fi
+    echo "--- Command succeeded for revision: $REV ---"
+    echo ""
+  done
+  # If the loop completes, return to the original revision.
+  echo "Script finished successfully on all revisions."
+  echo "--- Returning to original revision ---"
+  jj edit "$ORIGINAL_WC_COMMIT"
 }
