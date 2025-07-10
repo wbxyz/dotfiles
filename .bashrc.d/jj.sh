@@ -95,7 +95,7 @@ jjsb() { # submit specified change
     return 1
   fi
   if [[ "$(jj git push --dry-run -b $branch 2>&1)" != *"Nothing changed."* ]] ; then
-    echo 'No branch'
+    echo 'Unpushed changes'
     return 1
   fi
   remoteaddr=$(jj git remote list | rg "^origin " | cut -d' ' -f2)
