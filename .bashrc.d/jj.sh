@@ -6,15 +6,14 @@ jjrb() { # make rebase easier
   jj rebase -s "${1}" -d "${2}"
 }
 _lstrip_blanks() {
-  sed '/[^[:space:]]/,$!d'
-  #     |             ||\
-  #     |             |\ delete
-  #     |             | negate (everything NOT in range)
-  #     |             create a range ending at the last line
+  sed '/\S/,$!d'
+  #     |   ||\
+  #     |   |\ delete
+  #     |   | negate (everything NOT in range)
+  #     |   create a range ending at the last line
   #     match any line with a non-space character
 }
 _stacked_tag="stacked-commit: true"
-
 jjd() {
   jj diff -r ${1}
 }
@@ -75,36 +74,31 @@ jjrbc() { # rebase all children
   jjrb "all:${1}+~immutable()" "${2}"
 }
 jjsb() { # submit specified change
-  if [[ "$(jj log --no-graph -T 'change_id ++ "\n"' -r ${1} | wc -l)" != "1" ]]; then
-    echo 'Revset more than one change_id'
+  REV="${1}"
+  if [[ $REV == "" ]]; then
+    dirty="$(jj log -r "@ & description(exact:'') & ~empty()" --no-graph -T 'change_id.short()')"
+    if [[ "$dirty" != "" ]]; then
+      echo "Cannot mail dirty change: $dirty" >&2
+      return 1
+    fi
+    REV='coalesce(@&~description(exact:""), @-)'
+  fi
+  bmark="$(jj log -r "${REV}" --no-graph -T 'coalesce(remote_bookmarks.map(|s| s.name()))')"
+  if [[ "$bmark" == "" ]] ; then
+    echo 'No bookmark'
     return 1
   fi
-  REV="$(jj log --no-graph -T 'change_id' -r ${1})"
-  if [[ "$REV" == "" ]]; then
-    echo 'Usage: jjsb <REV>'
+  remote="$(jj log -r "${REV}" --no-graph -T 'coalesce(remote_bookmarks.map(|s| s.remote()))')"
+  if [[ "$remote" == "" ]] ; then
+    echo 'No remote'
     return 1
   fi
-  parent="$(jj log --no-graph -T 'change_id' -r ${1}-)"
-  if [[ "$parent" == "" ]] ; then
-    echo 'Missing parent'
-    return 1
-  fi
-  branch="$(jj log -r "${REV}" --no-graph -T 'coalesce(self.remote_bookmarks().map(|s| s.name()))' | cut -d' ' -f1)"
-  if [[ "$branch" == "" ]] ; then
-    echo 'No branch'
-    return 1
-  fi
-  if [[ "$(jj git push --dry-run -b $branch 2>&1)" != *"Nothing changed."* ]] ; then
-    echo 'Unpushed changes'
-    return 1
-  fi
-  remoteaddr=$(jj git remote list | rg "^origin " | cut -d' ' -f2)
+  remoteaddr=$(jj git remote list | rg "^${remote} " | cut -d' ' -f2)
   if [[ "$remoteaddr" == "" ]] || [[ "$remoteaddr" != git@github.com:* ]]; then
     echo 'No/bad remoteaddr'
     return 1
   fi
   repoid="${remoteaddr#git@github.com:}"
-  repoid="${repoid%.git}"
   user="${repoid%%/*}"
   # NOTE: This assumes the remote is a fork from upstream.
   upstreamid=$(gh repo view "${repoid}" --json parent --jq '"\(.parent.owner.login)/\(.parent.name)"')
