@@ -1,10 +1,8 @@
 // Place your key bindings in this file to override the defaults
-// Place your key bindings in this file to override the defaultsauto[]
 [
     {
         "key": "ctrl+a k",
         "command": "workbench.action.navigateUp",
-        "when": "!terminalFocus"
     },
     {
         "key": "ctrl+a j",
@@ -29,123 +27,45 @@
         "when": "!terminalFocus"
     },
     {
-        "key": "ctrl+\\",
-        "command": "-workbench.action.splitEditor"
-    },
-    {
         "key": "ctrl+a -",
-        "command": "workbench.action.splitEditorOrthogonal"
-    },
-    {
-        "key": "ctrl+k ctrl+\\",
-        "command": "-workbench.action.splitEditorOrthogonal"
-    },
-    {
-        "key": "ctrl+a shift+\\",
-        "command": "workbench.action.terminal.split",
-        "when": "terminalFocus && terminalProcessSupported"
-    },
-    {
-        "key": "ctrl+shift+5",
-        "command": "-workbench.action.terminal.split",
-        "when": "terminalFocus && terminalProcessSupported"
-    },
-    {
-        "key": "ctrl+a l",
-        "command": "workbench.action.terminal.focusNextPane",
-        "when": "terminalFocus && terminalProcessSupported"
-    },
-    {
-        "key": "alt+down",
-        "command": "-workbench.action.terminal.focusNextPane",
-        "when": "terminalFocus && terminalProcessSupported"
-    },
-    {
-        "key": "ctrl+a h",
-        "command": "workbench.action.terminal.focusPreviousPane",
-        "when": "terminalFocus && terminalProcessSupported"
-    },
-    {
-        "key": "alt+up",
-        "command": "-workbench.action.terminal.focusPreviousPane",
-        "when": "terminalFocus && terminalProcessSupported"
+        "command": "workbench.action.splitEditorOrthogonal",
+        "when": "!terminalFocus"
     },
     {
         "key": "ctrl+a 1",
         "command": "workbench.action.openEditorAtIndex1"
     },
     {
-        "key": "alt+1",
-        "command": "-workbench.action.openEditorAtIndex1"
-    },
-    {
         "key": "ctrl+a 2",
         "command": "workbench.action.openEditorAtIndex2"
-    },
-    {
-        "key": "alt+2",
-        "command": "-workbench.action.openEditorAtIndex2"
     },
     {
         "key": "ctrl+a 3",
         "command": "workbench.action.openEditorAtIndex3"
     },
     {
-        "key": "alt+3",
-        "command": "-workbench.action.openEditorAtIndex3"
-    },
-    {
         "key": "ctrl+a 4",
         "command": "workbench.action.openEditorAtIndex4"
-    },
-    {
-        "key": "alt+4",
-        "command": "-workbench.action.openEditorAtIndex4"
     },
     {
         "key": "ctrl+a 5",
         "command": "workbench.action.openEditorAtIndex5"
     },
     {
-        "key": "alt+5",
-        "command": "-workbench.action.openEditorAtIndex5"
-    },
-    {
         "key": "ctrl+a 6",
         "command": "workbench.action.openEditorAtIndex6"
-    },
-    {
-        "key": "alt+6",
-        "command": "-workbench.action.openEditorAtIndex6"
     },
     {
         "key": "ctrl+a 7",
         "command": "workbench.action.openEditorAtIndex7"
     },
     {
-        "key": "alt+7",
-        "command": "-workbench.action.openEditorAtIndex7"
-    },
-    {
         "key": "ctrl+a 8",
         "command": "workbench.action.openEditorAtIndex8"
     },
     {
-        "key": "alt+8",
-        "command": "-workbench.action.openEditorAtIndex8"
-    },
-    {
         "key": "ctrl+a 9",
         "command": "workbench.action.openEditorAtIndex9"
-    },
-    {
-        "key": "alt+9",
-        "command": "-workbench.action.openEditorAtIndex9"
-    },
-    {
-        "key": "ctrl+a k",
-        "command": "workbench.action.focusActiveEditorGroup",
-        "when": "terminalFocus"
     },
     {
         "key": "shift+enter",
@@ -181,5 +101,125 @@
         "key": "ctrl+shift+i",
         "command": "-editor.action.formatDocument.none",
         "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
-    }
+    },
+    {
+        "key": "pageup",
+        "command": "workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "ctrl+alt+-",
+        "command": "-workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "pagedown",
+        "command": "workbench.action.navigateForwardInNavigationLocations"
+    },
+    {
+        "key": "escape",
+        "command": "-extension.vim_escape",
+        "when": "editorTextFocus && vim.active && !inDebugRepl"
+    },
+    {
+        "key": "escape",
+        "command": "extension.vim_escape",
+        "when": "editorTextFocus && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "ctrl+a",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "f1",
+        "command": "references-view.findReferences",
+        "when": "editorHasReferenceProvider"
+    },
+    {
+        "key": "shift+alt+f12",
+        "command": "-references-view.findReferences",
+        "when": "editorHasReferenceProvider"
+    },
+    {
+        "key": "ctrl+f1",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus"
+    },
+    {
+        "key": "f12",
+        "command": "-editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-geminicodeassist.showinEditor",
+        "when": "authLoggedIn && config.geminicodeassist.enable && editorTextFocus && shouldRegisterInEditorCommand && !inGeminiDiffView && !isInDiffEditor"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-inlineChat2.close",
+        "when": "inlineChatHasEditsAgent && inlineChatVisible && !chatEdits.isRequestInProgress && chatEdits.requestCount == '0' || inlineChatHasEditsAgent && inlineChatVisible && !chatEdits.hasEditorModifications && !chatEdits.isRequestInProgress && chatEdits.requestCount == '0'"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-inlineChat.start",
+        "when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-inlineChat.startWithCurrentLine",
+        "when": "inlineChatHasProvider && inlineChatShowingHint && !editorReadonly && !inlineChatVisible"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-workbench.action.terminal.chat.start",
+        "when": "chatIsEnabled && terminalChatAgentRegistered && terminalFocusInAny && terminalHasBeenCreated || chatIsEnabled && terminalChatAgentRegistered && terminalFocusInAny && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-inlineChat2.reveal",
+        "when": "inlineChatHasEditsAgent && !chatEdits.isGlobalEditingSession && chatEdits.requestCount >= 1"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-settings.action.toggleAiSearch",
+        "when": "inSettingsEditor"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-search.action.searchWithAI",
+        "when": "hasAIResultProviderKey && searchViewletFocus"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-notebook.cell.chat.start",
+        "when": "config.notebook.experimental.cellChat && notebookChatAgentRegistered && notebookEditable && notebookEditorFocused && !inputFocus || config.notebook.experimental.generate && notebookChatAgentRegistered && notebookEditable && notebookEditorFocused && !inputFocus"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-toggleSuggestionDetails",
+        "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-workbench.action.terminal.suggestToggleDetails",
+        "when": "simpleSuggestWidgetHasFocusedSuggestion && terminalFocus && terminalHasBeenCreated && terminalIsOpen && terminalSuggestWidgetVisible || simpleSuggestWidgetHasFocusedSuggestion && terminalFocus && terminalIsOpen && terminalProcessSupported && terminalSuggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-focusSuggestion",
+        "when": "suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+    },
+    // {
+    //     "key": "ctrl+`",
+    //     "command": "workbench.action.toggleMaximizedPanel",
+    //     "when": "!terminalFocus && !panelMaximized"
+    // }
 ]
+
