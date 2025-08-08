@@ -60,5 +60,7 @@
     // Allow the "open file" native vscode command.
     "vim.handleKeys": {
         "<C-p>": false,
-    }
+    },
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false
 }
