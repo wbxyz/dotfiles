@@ -216,6 +216,7 @@
         "command": "-focusSuggestion",
         "when": "suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
     },
+
     // {
     //     "key": "ctrl+`",
     //     "command": "workbench.action.toggleMaximizedPanel",
