@@ -14,14 +14,19 @@ got() {
     echo 'Test errors'
     return 1
   fi
-  go run github.com/google/addlicense@v1.1.1 -check -s=only -ignore='bin/**' -ignore='**/.terraform.lock.hcl' -ignore='definitions/**' ** 
+  go run github.com/google/addlicense@v1.1.1 -check -s=only -ignore='**/bin/**' -ignore='**/.terraform.lock.hcl' -ignore='definitions/**' ** 
   if [ $? -ne 0 ]; then
     echo 'Licenses missing'
+    return 1
+  fi
+  npx prettier --check --no-error-on-unmatched-pattern **/*.md **/*.yml **/*.yaml
+  if [ $? -ne 0 ]; then
+    echo 'Markdown formatting'
     return 1
   fi
   echo "Looks good"
 }
 gofix() {
-  gofmt -s -w -l . && go run github.com/google/addlicense@v1.1.1 -s=only -ignore='bin/**' -ignore='**/.terraform.lock.hcl' -ignore='definitions/**' **
+  gofmt -s -w -l . && go run github.com/google/addlicense@v1.1.1 -s=only -ignore='bin/**' -ignore='**/.terraform.lock.hcl' -ignore='definitions/**' ** && npx prettier --write --no-error-on-unmatched-pattern **/*.md **/*.yml **/*.yaml
 }
 
